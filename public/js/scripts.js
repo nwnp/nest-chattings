@@ -6,7 +6,11 @@ const chattingBoxElement = getElementId('chatting_box');
 const formElement = getElementId('chat_form');
 
 function helloUser() {
-  alert('What is your name?');
+  const username = prompt('What is your name?');
+  socket.emit('new_user', username);
+  socket.on('hello_user', (data) => {
+    console.log(data);
+  });
 }
 
 function init() {
