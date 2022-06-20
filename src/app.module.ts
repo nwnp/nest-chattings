@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ChatsModule } from './chats/chats.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { AppService } from './app.service';
       isGlobal: true, // 다른 모듈에서 따로 DI를 해주지 않아도됨
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    ChatsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
